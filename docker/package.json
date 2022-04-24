@@ -1,6 +1,6 @@
 {
   "name": "nci-ansible-ui-docker-installation",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "description": "nci-ansible-ui deployment inside docker image",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
   "dependencies": {
     "leveldown": "5.5.1",
     "nci": "1.0.26",
-    "nci-ansible-ui": "2.0.0-alpha.2",
+    "nci-ansible-ui": "https://git@github.com/halsbox/nci-ansible-ui.git#feature/mandatory-vars",
     "nci-mail-notification": "1.1.2",
     "nci-projects-reloader": "2.0.0",
     "nci-rest-api-server": "2.0.0",

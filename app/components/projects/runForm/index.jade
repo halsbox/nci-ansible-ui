@@ -33,7 +33,7 @@ div
 
 					- var scmBranch = this.state.scmBranch;
 					if scmBranch === '-1'
-						| 
+						|
 						input.form-control(
 							value= this.state.scmRev,
 							onChange=this.onScmRevChange
@@ -104,7 +104,7 @@ div
 							label.col-md-offset-2.col-md-2.control-label(
 								for="extra-var-" + mandatory_var.name,
 								title=mandatoryVarTitle
-							) mandatoryVarTitle
+							)
 							.col-md-4
 								input.form-control(
 									id="extra-var-" + mandatory_var.name
@@ -113,6 +113,7 @@ div
 									value= this.state.mandatoryVars[mandatory_var.name]
 									onChange=this.onMandatoryVarChange
 								)
+                = mandatoryVarTitle
 
 				.form-group
 					label.col-md-offset-2.col-md-2.control-label(
@@ -130,7 +131,7 @@ div
 			.col-md-offset-4.col-md-2
 				button.btn.btn-md.btn-default.btn-block(onClick=this.onCancel)
 					i.fa.fa-fw.fa-ban
-					| 
+					|
 					span Cancel
 
 			.col-md-2
@@ -147,6 +148,6 @@ div
 
 				button.btn.btn-md.btn-success.btn-block(onClick=this.onRunProject, class= buttonClasses)
 					i.fa.fa-fw.fa-play
-					| 
+					|
 					span Run
 

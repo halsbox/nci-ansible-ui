@@ -23,7 +23,8 @@
     "_build-docker-image": "if [ \"$imageTag\" = \"\" ]; then echo \"imageTag is not set\"; exit 1; fi; docker build --tag okvd/nci-ansible-ui:$imageTag ./docker/",
     "build-docker-image": "export imageTag=$npm_package_version && npm run _build-docker-image",
     "build-docker-image-alpha": "export imageTag=$npm_package_version-alphaimage && npm run _build-docker-image",
-    "build-docker-image-latest": "export imageTag=latest && npm run _build-docker-image"
+    "build-docker-image-latest": "export imageTag=latest && npm run _build-docker-image",
+    "start": "nci"
   },
   "repository": {
     "type": "git",
@@ -55,6 +56,7 @@
   },
   "devDependencies": {
     "@swc/core": "1.2.38",
+    "@swc/core-linux-musl": "1.2.42",
     "ansi_up": "1.3.0",
     "bootstrap": "3.4.1",
     "browserify": "16.5.1",

@@ -97,6 +97,23 @@ div
 							onChange=this.onLimitChange
 						)
 
+				if playbook.mandatory_vars
+					each mandatory_var in playbook.mandatory_vars
+						.form-group
+							- var mandatoryVarTitle = mandatory_var.title ? mandatory_var.title : mandatory_var.name;
+							label.col-md-offset-2.col-md-2.control-label(
+								for="extra-var-" + mandatory_var.name,
+								title=mandatoryVarTitle
+							) mandatoryVarTitle
+							.col-md-4
+								input.form-control(
+									id="extra-var-" + mandatory_var.name
+									type="text",
+									key=mandatory_var.name
+									value= this.state.mandatoryVars[mandatory_var.name]
+									onChange=this.onMandatoryVarChange
+								)
+
 				.form-group
 					label.col-md-offset-2.col-md-2.control-label(
 						for="extra-vars",

@@ -25,6 +25,7 @@ module.exports = React.createClass({
 			playbookName: '',
 			inventoryNames: [],
 			limit: '',
+			mandatoryVars: {},
 			extraVars: ''
 		});
 	},
@@ -39,6 +40,7 @@ module.exports = React.createClass({
 			playbookName: event.target.value,
 			inventoryNames: [],
 			limit: '',
+			mandatoryVars: {},
 			extraVars: ''
 		});
 	},
@@ -74,6 +76,19 @@ module.exports = React.createClass({
 	onLimitChange(event) {
 		this.setState({limit: event.target.value});
 	},
+	onMandatoryVarChange(event) {
+		const input = event.target;
+		const mandatoryVar = input.key
+		var mandatoryVars = this.state.mandatoryVars || {};
+		if (input.value) {
+			mandatoryVars[mandatoryVar] = input.value;
+		} else {
+			if (mandatoryVars[mandatoryVar]) {
+				delete mandatoryVars[mandatoryVar];
+			}
+		}
+		this.setState({mandatoryVars: mandatoryVars});
+	},
 	onExtraVarsChange(event) {
 		this.setState({extraVars: event.target.value});
 	},
@@ -93,8 +108,11 @@ module.exports = React.createClass({
 				buildParams.playbook.limit = this.state.limit;
 			}
 
+			if (this.state.mandatoryVars) {
+				buildParams.playbook.extraVars = Object.keys(this.state.mandatoryVars).map(k => `${k}=${this.state.mandatoryVars[k]}`).join(" ");
+			}
 			if (this.state.extraVars) {
-				buildParams.playbook.extraVars = this.state.extraVars;
+				buildParams.playbook.extraVars = buildParams.playbook.extraVars ? `${buildParams.playbook.extraVars} ${this.state.extraVars}` : this.state.extraVars;
 			}
 		}
 

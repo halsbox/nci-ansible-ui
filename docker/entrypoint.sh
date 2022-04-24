@@ -16,7 +16,7 @@ fi;
 # user may already exist if running earlier created container
 if ! getent passwd "$UID" > /dev/null 2>&1; then
 	addgroup -g "$GID" "$USER" &&
-	adduser --disabled-password --ingroup "$USER" --uid "$UID" "$USER";
+        adduser -D -G "$USER" -u "$UID" "$USER";
 fi;
 
 HOME=`getent passwd "$UID" | cut -d: -f6`;

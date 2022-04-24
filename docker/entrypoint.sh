@@ -23,9 +23,6 @@ HOME=`getent passwd "$UID" | cut -d: -f6`;
 
 echo "*** Running nci";
 echo "USER: $USER, UID: $UID, GID: $GID, HOME: $HOME";
-cat /app/dependencies-info.txt;
-echo "***";
-
 
 cd /app &&
 su "$USER" -c node_modules/.bin/nci;

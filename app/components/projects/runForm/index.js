@@ -78,7 +78,7 @@ module.exports = React.createClass({
 	},
 	onMandatoryVarChange(event) {
 		const input = event.target;
-		const mandatoryVar = input.key
+		const mandatoryVar = input.dataset.fieldKey;
 		var mandatoryVars = this.state.mandatoryVars || {};
 		if (input.value) {
 			mandatoryVars[mandatoryVar] = input.value;
